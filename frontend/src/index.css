@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap");
+
+:root {
+  --bg: #f5efe5;
+  --ink: #1d2433;
+  --muted: #5f6675;
+  --card: rgba(255, 255, 255, 0.74);
+  --line: rgba(35, 46, 69, 0.16);
+  --brand: #cc5222;
+  --brand-soft: #ffe1d4;
+  --ok: #1f7a42;
+  --danger: #a61426;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #ffdca8 0%, transparent 35%),
+    radial-gradient(circle at 90% 15%, #cde4f5 0%, transparent 25%),
+    linear-gradient(145deg, #f5efe5, #ebe2d5);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.topbar {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(9px);
+}
+
+.brand {
+  font-family: "Sora", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.menu,
+.auth-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.menu a,
+.auth-actions a,
+.auth-actions button,
+button {
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--ink);
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.menu a.active,
+.auth-actions a.active {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+button:hover,
+.menu a:hover,
+.auth-actions a:hover {
+  transform: translateY(-1px);
+}
+
+.user-badge {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.main-content {
+  padding: 26px 2px;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-family: "Sora", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  padding: 16px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font-family: inherit;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.product-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.product-card img,
+.product-detail img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 220px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+}
+
+.auth-panel form,
+.admin-form {
+  display: grid;
+  gap: 10px;
+}
+
+.cart-list {
+  display: grid;
+  gap: 12px;
+}
+
+.cart-item,
+.admin-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: white;
+}
+
+.cart-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.checkout-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.admin-list {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.success {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .products-grid,
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .menu,
+  .auth-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cart-item,
+  .admin-row,
+  .checkout-line {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
