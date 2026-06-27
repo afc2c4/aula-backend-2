@@ -82,6 +82,10 @@ passport.deserializeUser((id, done) => {
 
   return done(null, user);
 });
+
+module.exports = {
+  configurePassport
+};
 ```
 * **`deserializeUser` (Recuperação da Sessão):** Em cada nova requisição que o usuário fizer, o Passport pega o `id` que estava salvo no cookie, busca o usuário completo no "banco de dados" (`store.users`) e o anexa ao objeto da requisição.
 * **Resultado:** Nas suas rotas do Express, você poderá acessar o usuário logado simplesmente digitando **`req.user`** (ex: `req.user.name`, `req.user.role`).
