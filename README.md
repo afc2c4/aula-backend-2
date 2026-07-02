@@ -77,14 +77,3 @@ O frontend está configurado com proxy para `/api` apontando para `http://localh
 - Os dados estão em memória (`backend/src/data/store.js`), sem banco persistente.
 - Reiniciar o backend limpa usuários/produtos/pedidos criados em tempo de execução.
 
-## Tutorial Backend
-
-Foi criada uma pasta com tutorial detalhado de cada requisito funcional do backend:
-
-- `tutorial/backend/README.md`
-- `tutorial/backend/01-roteamento-modularizado.md`
-- `tutorial/backend/02-metodos-http-crud.md`
-- `tutorial/backend/03-parametros-rota-e-query.md`
-- `tutorial/backend/04-validacao-e-sanitizacao.md`
-- `tutorial/backend/05-middlewares-customizados.md`
-- `tutorial/backend/06-passport-sessoes-cookies.md`
