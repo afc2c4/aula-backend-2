@@ -88,3 +88,29 @@ Foi criada uma pasta com tutorial detalhado de cada requisito funcional do backe
 - `tutorial/backend/04-validacao-e-sanitizacao.md`
 - `tutorial/backend/05-middlewares-customizados.md`
 - `tutorial/backend/06-passport-sessoes-cookies.md`
+
+## Debugging com Google Chrome + DevTools (3 casos de uso)
+
+### 1) Login/sessão (cookie + auth)
+
+1. Abra `http://localhost:5173/login` e o DevTools (`F12`).
+2. Vá em **Network** e faça login com um usuário válido (ex.: o usuário admin inicial descrito acima).
+3. Inspecione `POST /api/auth/login` e depois `GET /api/auth/session`.
+4. Confira em **Application > Cookies** se o cookie de sessão foi criado.
+5. Se falhar, valide status HTTP, payload enviado e resposta de erro.
+
+### 2) Filtros do catálogo (query params)
+
+1. Na home (`/`), aplique busca, categoria e ordenação.
+2. No **Network**, abra `GET /api/products?...`.
+3. Verifique se os query params `q`, `category`, `sort` estão corretos.
+4. Em **Response**, confirme se `data.products` veio no formato esperado.
+5. Se a tela não atualizar, use **Sources > Event Listener Breakpoints** no evento `submit`.
+
+### 3) Checkout e permissões (carrinho + admin)
+
+1. Adicione item no catálogo, vá para `/cart` e clique em **Finalizar compra**.
+2. Veja no **Network** o `POST /api/orders` com `items[{productId, quantity}]`.
+3. Sem login, confirme o erro esperado: "Faça login para finalizar a compra".
+4. Com login, valide sucesso e mensagem `Pedido #... criado com sucesso`.
+5. Abra `/admin`: se não for admin, confirme redirecionamento para `/` (regra de `user.role !== "admin"`).
